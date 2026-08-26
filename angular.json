@@ -30,6 +30,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.production.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -59,7 +65,8 @@
               "buildTarget": "Carteira-acoes-frontend:build:production"
             },
             "development": {
-              "buildTarget": "Carteira-acoes-frontend:build:development"
+              "buildTarget": "Carteira-acoes-frontend:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
