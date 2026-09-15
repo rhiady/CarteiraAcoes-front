@@ -7,19 +7,14 @@ import { CorretoraService } from '../../core/services/corretora.service';
   selector: 'app-corretora-form-page',
   imports: [ReactiveFormsModule, RouterLink],
   template: `
-    <section>
-      <h1>Cadastrar corretora</h1>
-      <form [formGroup]="form" (ngSubmit)="submit()">
-        <label for="cnpj">CNPJ</label>
-        <input id="cnpj" formControlName="cnpj" autocomplete="off">
-        @if (form.controls.cnpj.touched && form.controls.cnpj.hasError('required')) {
-          <p class="error">Informe o CNPJ.</p>
-        }
+    <section class="creation-page">
+      <div class="page-heading"><div><p class="eyebrow">Cadastro</p><h1>Nova corretora</h1><p>Informe o CNPJ para consultar e vincular a instituição às carteiras.</p></div><a routerLink="/corretoras">Voltar para corretoras</a></div>
+      <form class="operation-form creation-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <fieldset><legend>Identificação da instituição</legend><div><label for="cnpj">CNPJ <span aria-hidden="true">*</span></label><input id="cnpj" formControlName="cnpj" autocomplete="off" inputmode="numeric" aria-describedby="cnpj-help cnpj-error"><p id="cnpj-help" class="helper-text">Digite apenas os números do CNPJ.</p>@if (form.controls.cnpj.touched && form.controls.cnpj.hasError('required')) {<p id="cnpj-error" class="error" role="alert">Informe o CNPJ.</p>}</div></fieldset>
         @if (error()) {
           <p class="error" role="alert">{{ error() }}</p>
         }
-        <button [disabled]="form.invalid || loading()">{{ loading() ? 'Cadastrando…' : 'Cadastrar' }}</button>
-        <a routerLink="/corretoras">Cancelar</a>
+        <div class="page-actions form-actions"><a routerLink="/corretoras">Cancelar</a><button type="submit" [disabled]="form.invalid || loading()">{{ loading() ? 'Cadastrando…' : 'Cadastrar corretora' }}</button></div>
       </form>
     </section>
   `,

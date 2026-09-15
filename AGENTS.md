@@ -1,3 +1,82 @@
+# Frontend project instructions
+
+Este é um projeto Angular existente.
+
+## Regra principal
+
+Antes de criar, mover, remover ou alterar qualquer arquivo:
+
+1. Leia `openspec/config.yaml`.
+2. Leia `openspec/specs/**`.
+3. Leia todas as changes ativas em `openspec/changes/**`.
+4. Identifique se a solicitação atual pertence a uma change já existente.
+5. Leia os arquivos Angular relacionados antes de propor novos componentes.
+6. Preserve a arquitetura atual do projeto.
+
+## Estrutura existente
+
+O projeto utiliza:
+
+- `src/app/core` para infraestrutura, models, services, mappers e formatters.
+- `src/app/features` para páginas organizadas por domínio.
+- `src/app/shared/components` para componentes reutilizáveis.
+
+Não crie uma nova arquitetura como `pages/`, `components/`, `dialogs/`,
+`services/` dentro de cada feature apenas para seguir um template.
+Primeiro reutilize a organização existente.
+
+## OpenSpec
+
+OpenSpec é a fonte de verdade das mudanças planejadas.
+
+Antes de implementar uma funcionalidade:
+
+- verifique changes existentes;
+- atualize uma change existente quando ela já representar a mesma iniciativa;
+- crie uma nova change somente quando a mudança possuir escopo realmente distinto;
+- não edite diretamente specs consolidadas durante uma change não arquivada;
+- preserve requisitos que não estejam sendo modificados.
+
+O fluxo esperado é:
+
+proposal -> specs/design -> tasks -> implementação -> validação -> archive.
+
+## Frontend Design
+
+Utilize a frontend-design skill para decisões visuais.
+
+A skill deve:
+
+- respeitar o OpenSpec;
+- respeitar a estrutura existente;
+- ler os componentes atuais antes de criar novos;
+- manter Angular Material;
+- reutilizar componentes compartilhados quando adequado;
+- manter consistência global de spacing, tipografia e tokens.
+
+A skill não pode:
+
+- inventar endpoints;
+- inventar campos de API;
+- implementar regras financeiras localmente quando pertencem ao backend;
+- recriar componentes que já existem sem justificar a substituição;
+- reorganizar o projeto inteiro sem que a change peça isso.
+
+## Backend contract
+
+Antes de integrar uma nova funcionalidade:
+
+1. leia os models existentes em `core/models`;
+2. leia os services existentes em `core/services`;
+3. confira o contrato OpenAPI/backend fornecido ao projeto;
+4. não presuma endpoints ainda não implementados.
+
+Se uma funcionalidade depender de uma mudança futura do backend,
+mantenha essa dependência explícita no OpenSpec.
+
+
+
+
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
 
 ## TypeScript Best Practices

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import axe from 'axe-core';
 import { provideRouter, Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -47,6 +48,14 @@ describe('CorretoraFormPage', () => {
     expect(navigateByUrl).not.toHaveBeenCalled();
     expect(fixture.nativeElement.textContent).toContain('Corretora não registrada na CVM.');
     expect((fixture.nativeElement.querySelector('#cnpj') as HTMLInputElement).value).toBe('12.345.678/0001-90');
+  });
+
+  it('has no Axe violations in the representative registration form', async () => {
+    const results = await axe.run(fixture.nativeElement as HTMLElement, {
+      rules: { 'color-contrast': { enabled: false } },
+    });
+
+    expect(results.violations).toEqual([]);
   });
 });
 

@@ -7,7 +7,7 @@ export const errorInterceptor: HttpInterceptorFn = (request, next) => next(reque
     const body = error.error as Partial<ApiError> | null;
     const message = error.status === 0
       ? 'Não foi possível conectar ao backend. Verifique se o serviço está disponível.'
-      : body?.message || 'Não foi possível concluir a solicitação.';
+      : body?.message || 'Não foi possível concluir a operação.';
     const normalized: ApiError = { status: error.status, message, error: body?.error, timestamp: body?.timestamp, path: body?.path };
     return throwError(() => normalized);
   }
